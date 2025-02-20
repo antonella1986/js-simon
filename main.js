@@ -41,6 +41,20 @@ function generateInputs() {
         // ...e lo buttiamo nell'HTML
         inputContainerEl.appendChild(input);
     }
+    // a questo punto l'utente può inserire negli input appena generati i numeri che ricorda
     // mostriamo il pulsante "Invia"
     submitButtonEl.style.display = "block";
 }
+
+// aggiungiamo l'evento del clic, in modo che i numeri inseriti negli input vengano inviati
+submitButtonEl.addEventListener("click", function() {
+    // verifichiamo se i numeri inseriti dall'utente sono corretti
+    // creiamo un nuovo array con i numeri inseriti dall'utente CHE SONO ANCHE PRESENTI nell'array dei numeri random generati all'inizio
+    let correctNumbers = userNumbers.filter(function(num) {
+        return randomNumbers.includes(num); // includes() ci serve per sapere se i numeri inseriti esistono nell'array "originale" randomNumbers
+    });
+});
+
+// stampiamo il risultato
+resultContainer.innerText = `Hai indovinato ${correctNumbers.length} numeri: ${correctNumbers.join(", ")}`;
+
