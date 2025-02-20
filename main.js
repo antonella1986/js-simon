@@ -24,6 +24,23 @@ numbersContainerEl.innerText = randomNumbers.join(" - ");
 setTimeout(function() {
         // dopo 30 secondi i numeri spariscono
         numbersContainerEl.innerText = "";
-        // generiamo gli input in cui l'utente deve inserire i numeri che ha tentato di memorizzare
+        // richiamiamo la funzione per generare gli input in cui l'utente deve inserire i numeri che ha tentato di memorizzare
         generateInputs();
 }, 30000);
+
+// funzione per generare i 5 input
+function generateInputs() {
+    // creiamo un ciclo
+    for (let i = 0; i < 5; i++) {
+        // creiamo un nuovo input
+        let input = document.createElement("input");
+        // diciamo al sistema che l'utente può scrivere solo numeri negli input
+        input.type = "number";
+        // assegnamo una classe all'input...
+        input.classList.add("user-input");
+        // ...e lo buttiamo nell'HTML
+        inputContainerEl.appendChild(input);
+    }
+    // mostriamo il pulsante "Invia"
+    submitButtonEl.style.display = "block";
+}
